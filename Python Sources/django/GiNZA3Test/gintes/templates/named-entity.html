@@ -1,0 +1,29 @@
+{% load static %}{% load convert_html %}<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		<link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="{% static 'ska-style.css' %}" />
+		<script rel="script" type="text/javascript" src="{% static 'loading.js' %}"></script>
+		<title>GiNZA 3</title>
+	</head>
+	<!-- 本当は同じTemplateでエラーと出力の両方を書くのは良くない。そうだ別テンプレートに、分けよう。 -->
+	<body>{% if error %}
+		<h1>500 Internal Server Error</h1>
+		<div id="all">
+			<p>
+				誠に申し訳ありませんが，入力文字列に異常がありました。ご確認の上，再度ご入力お願いします。
+			</p>{% else %}
+		<h1>GiNZA 3 固有表現抽出</h1>
+		<div id="all">
+			<pre style="tab-size: 20; -moz-tab-size: 20;white-space: pre-wrap; line-height: 2.5; text-align: justify; text-justify: inter-word;">{{ result | cabocha }}</pre>
+			{% endif %}
+			<div id="loading" style="display: none; text-align: center;">
+				<p>
+					<img class="thumbnail" src="{% static 'loading.gif' %}" title="計算中" />　計算中。しばらくお待ち下さい。
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

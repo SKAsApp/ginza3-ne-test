@@ -1,0 +1,41 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		<link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="{% static 'ska-style.css' %}" />
+		<script rel="script" type="text/javascript" src="{% static 'loading.js' %}"></script>
+		<title>GiNZA 3</title>
+	</head>
+	<body>
+		<h1>GiNZA 3 固有表現抽出</h1>
+		<div id="all">
+			<form action="../named-entity" method="post" accept-charset="UTF-8" target="_self">
+				{% csrf_token %}
+				<table class="no-border">
+					<tr class="no-border" style="height: 10%;">
+						<td class="no-border" style="width: 15%;">表示：</td>
+						<td class="no-border" style="width: 85%;">
+							<select name="view">
+								<option>displacy</option>
+								<option>独自</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="no-border" style="height: 80%;">
+						<td class="no-border" style="width: 15%;">文字列入力：</td>	<td class="no-border" style="width: 85%;"><textarea class="ta" name="content"></textarea></td>
+					</tr>
+					<tr class="no-border" style="height: 10%;">
+						<td class="no-border" style="width: 15%;">　</td>	<td class="right no-border" style="width: 85%;"><input type="submit" onclick="sendString( );" value="送信" /></td>
+					</tr>
+				</table>
+			</form>
+			<div id="loading" style="display: none; text-align: center;">
+				<p>
+					<img class="thumbnail" src="{% static 'loading.gif' %}" title="計算中" />　計算中。しばらくお待ち下さい。
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
