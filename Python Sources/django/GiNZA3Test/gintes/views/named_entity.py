@@ -66,6 +66,7 @@ class NamedEntity(View):
 	@timeout_decorator.timeout(10.0)
 	def disp(self, doc):
 		self.__logger.info("displacyを起動します。\n5秒後に転送します。")
+		# ポート番号はwellknown（1〜1024）とephemeral（49152〜65535）以外なら何でも良い。例では「いい みりてこ」にしている。みりてことはアイドルグループ「わーすた」のメンバーである。https://twitter.com/tws_miri
 		displacy.serve(doc, style = "ent", port = 11315, host = "127.0.0.1")
 	
 	def stop_disp(self):
